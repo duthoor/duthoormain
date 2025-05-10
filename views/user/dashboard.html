@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUTHOOR - Dashboard</title>
+    <link rel="stylesheet" href="/public/styles/globals.css" />
+    <link rel="stylesheet" href="/public/styles/components.css" />
+    <link rel="stylesheet" href="/public/styles/dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/public/js/components/saudi-riyal.js" type="module"></script>
+  </head>
+  <body>
+    <script src="/public/js/components/navbar.js" type="module"></script>
+    <duthoor-navbar></duthoor-navbar>
+    <div class="page-container">
+      <main class="content-area">
+        <div class="wrapper">
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading your dashboard...</p>
+          </div>
+
+          <div class="error-state hidden">
+            <div class="error-icon">!</div>
+            <h2>Something went wrong</h2>
+            <p class="error-message"></p>
+            <button class="retry-btn">Try Again</button>
+          </div>
+
+          <div class="success-content hidden">
+            <div class="two-columns">
+              <section class="dashboard-section">
+                <div class="section-header">
+                  <h2>Welcome, <span id="user-name">User</span></h2>
+                </div>
+              </section>
+
+              <section class="dashboard-section">
+                <div class="section-header">
+                  <h2>
+                    Your current balance is <span id="current-balance">0</span>
+                    <saudi-riyal-image></saudi-riyal-image>
+                  </h2>
+                  <a href="/users/balance" class="view-more">View More</a>
+                </div>
+              </section>
+            </div>
+            <div class="two-columns">
+              <section class="dashboard-section">
+                <div class="section-header">
+                  <h2>Your April recap is ready</h2>
+                  <a href="/users/spending" class="view-more">View More</a>
+                </div>
+                <div class="chart-container">
+                  <canvas id="monthlyChart"></canvas>
+                </div>
+              </section>
+
+              <section class="dashboard-section">
+                <div class="section-header">
+                  <h2>Here's what you spent on in April</h2>
+                  <a href="/users/spending" class="view-more">View More</a>
+                </div>
+                <div class="chart-container pie-chart">
+                  <canvas id="spendingChart"></canvas>
+                </div>
+              </section>
+            </div>
+
+            <section class="dashboard-section">
+              <div class="section-header">
+                <h2>Investments Portfolio</h2>
+                <a href="/users/investments" class="view-more">View More</a>
+              </div>
+              <p>
+                Your cumulative portfolio is <span id="portfolio-total">0</span> <saudi-riyal-image></saudi-riyal-image>
+              </p>
+              <div id="investments-container" class="bank-cards">
+              </div>
+            </section>
+
+            <section class="dashboard-section">
+              <div class="section-header">
+                <h2>Savings</h2>
+                <a href="/users/savings" class="view-more">View More</a>
+              </div>
+              <h3>Ongoing payables</h3>
+              <table id="savings-table">
+                <thead>
+                  <tr>
+                    <th>Loan Type</th>
+                    <th>Total Amount</th>
+                    <th>Amount can be payed off</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <duthoor-footer></duthoor-footer>
+    <script src="/public/js/components/footer.js" type="module"></script>
+
+    <template id="bank-card-template">
+      <div class="bank-card">
+        <div class="bank-header">
+          <img class="bank-logo" src="" alt="Bank Logo" />
+          <h3 class="bank-name"></h3>
+        </div>
+        <div class="bank-details">
+          <div class="detail-item">
+            <span>Portfolio:</span>
+            <span class="portfolio-value"></span>
+          </div>
+          <div class="detail-item">
+            <span>Profit/Loss:</span>
+            <span class="profit-loss-value"></span>
+          </div>
+          <div class="detail-item">
+            <span>Cash Balance:</span>
+            <span class="cash-value"></span>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="savings-row-template">
+      <tr>
+        <td class="loan-type"></td>
+        <td class="total-amount"></td>
+        <td class="paid-amount"></td>
+      </tr>
+    </template>
+
+    <script src="/public/js/dashboard.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUTHOOR - User Management</title>
+    <link rel="stylesheet" href="/public/styles/globals.css" />
+    <link rel="stylesheet" href="/public/styles/components.css" />
+    <link rel="stylesheet" href="/public/styles/admin/users.css" />
+  </head>
+  <body>
+    <admin-navbar></admin-navbar>
+    <script src="/public/js/components/admin-nav.js" type="module"></script>
+
+    <div class="page-container">
+      <div class="wrapper">
+        <header class="page-header">
+          <h1>User Management</h1>
+          <div class="user-controls">
+            <input type="text" id="search-users" placeholder="Search by name, email or CNIC..." class="search-input" />
+          </div>
+        </header>
+
+        <main class="content-area">
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading users...</p>
+          </div>
+
+          <div class="error-state hidden">
+            <div class="error-icon">!</div>
+            <h2>Something went wrong</h2>
+            <p class="error-message"></p>
+            <button class="retry-btn">Try Again</button>
+          </div>
+
+          <div class="success-content hidden">
+            <div class="table-container">
+              <table id="users-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>ID/IQAMA</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="/public/js/admin/users.js" type="module"></script>
+  </body>
+</html>

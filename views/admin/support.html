@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUTHOOR - Support Messages</title>
+    <link rel="stylesheet" href="/public/styles/globals.css" />
+    <link rel="stylesheet" href="/public/styles/components.css" />
+    <link rel="stylesheet" href="/public/styles/admin/support-messages.css" />
+  </head>
+  <body>
+    <admin-navbar></admin-navbar>
+    <script src="/public/js/components/admin-nav.js" type="module"></script>
+
+    <div class="page-container">
+      <div class="wrapper">
+        <header class="page-header">
+          <h1>Support Messages</h1>
+          <div class="controls">
+            <input type="text" id="search-messages" placeholder="Search messages..." class="search-input" />
+            <select id="sort-messages" class="filter-select">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+            </select>
+          </div>
+        </header>
+
+        <main class="content-area">
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading support messages...</p>
+          </div>
+
+          <div class="error-state hidden">
+            <div class="error-icon">!</div>
+            <h2>Something went wrong</h2>
+            <p class="error-message"></p>
+            <button class="retry-btn">Try Again</button>
+          </div>
+
+          <div class="success-content hidden">
+            <div class="table-container">
+              <table id="messages-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+   
+    <div id="message-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Message Details</h2>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="message-detail-grid">
+            <div class="detail-item">
+              <span class="detail-label">From:</span>
+              <span id="detail-user" class="detail-value"></span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Email:</span>
+              <span id="detail-email" class="detail-value"></span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Date:</span>
+              <span id="detail-date" class="detail-value"></span>
+            </div>
+            <div class="detail-item full-width">
+              <span class="detail-label">Message:</span>
+              <div id="detail-message" class="message-content"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn secondary close-modal">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/public/js/admin/support-messages.js" type="module"></script>
+  </body>
+</html>

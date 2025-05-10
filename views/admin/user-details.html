@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUTHOOR - User Financial Dashboard</title>
+    <link rel="stylesheet" href="/public/styles/globals.css" />
+    <link rel="stylesheet" href="/public/styles/components.css" />
+    <link rel="stylesheet" href="/public/styles/admin/user-details.css" />
+    <script type="module" src="/public/js/components/saudi-riyal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <admin-navbar></admin-navbar>
+    <script src="/public/js/components/admin-nav.js" type="module"></script>
+
+    <div class="page-container">
+      <div class="wrapper">
+        <header class="page-header">
+          <h1>User Financial Dashboard</h1>
+          <div class="user-profile-badge">
+            <span id="user-name"></span>
+            <span id="user-email"></span>
+          </div>
+        </header>
+
+        <main class="content-area">
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading financial data...</p>
+          </div>
+
+          <div class="error-state hidden">
+            <div class="error-icon">!</div>
+            <h2>Something went wrong</h2>
+            <p class="error-message"></p>
+            <button class="retry-btn">Try Again</button>
+          </div>
+
+          <div class="success-content hidden">
+            
+            <div class="summary-cards">
+              <div class="summary-card total-balance">
+                <h3>Total Balance</h3>
+                <p id="total-balance">0 SAR</p>
+              </div>
+              <div class="summary-card total-payables">
+                <h3>Total Payables</h3>
+                <p id="total-payables">0 SAR</p>
+              </div>
+              <div class="summary-card total-savings">
+                <h3>Total Savings</h3>
+                <p id="total-savings">0 SAR</p>
+              </div>
+            </div>
+
+         
+            <section class="charts-section">
+              <div class="chart-container">
+                <h3>Spending by Category</h3>
+                <div class="chart-wrapper">
+                  <canvas id="spendingChart"></canvas>
+                </div>
+              </div>
+              <div class="chart-container">
+                <h3>Monthly Spending History</h3>
+                <div class="chart-wrapper">
+                  <canvas id="monthlyHistoryChart"></canvas>
+                </div>
+              </div>
+            </section>
+
+          
+            <section class="banks-section">
+              <h2 class="section-title">Bank Accounts</h2>
+              <div class="banks-container" id="banks-container">
+              
+              </div>
+            </section>
+
+            <section class="payables-section">
+              <h2 class="section-title">Payables</h2>
+              <div class="payables-table-container">
+                <table id="payables-table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Amount</th>
+                      <th>Priority</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </section>
+
+            
+            <section class="transactions-section">
+              <h2 class="section-title">Recent Transactions</h2>
+              <div class="transactions-controls">
+                <select id="bank-filter" class="filter-select">
+                  <option value="all">All Banks</option>
+                  
+                </select>
+                <input type="text" id="search-transactions" placeholder="Search transactions..." class="search-input" />
+              </div>
+              <div class="transactions-table-container">
+                <table id="transactions-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Recipient</th>
+                      <th>Amount</th>
+                      <th>Category</th>
+                      <th>Bank</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+   
+    <script src="/public/js/admin/user-details.js" type="module"></script>
+  </body>
+</html>

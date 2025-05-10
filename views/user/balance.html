@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUTHOOR - Current Accounts</title>
+    <link rel="stylesheet" href="/public/styles/globals.css" />
+    <link rel="stylesheet" href="/public/styles/components.css" />
+    <link rel="stylesheet" href="/public/styles/balance.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="/public/js/components/saudi-riyal.js" type="module"></script>
+  </head>
+  <body>
+    <script src="/public/js/components/navbar.js" type="module"></script>
+    <duthoor-navbar></duthoor-navbar>
+
+    <div class="page-container">
+      <main class="content-area">
+        <div class="wrapper">
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading your accounts...</p>
+          </div>
+
+          <div class="error-state hidden">
+            <div class="error-icon">!</div>
+            <h2>Something went wrong</h2>
+            <p class="error-message"></p>
+            <button class="retry-btn">Try Again</button>
+          </div>
+
+          <div class="success-content hidden">
+            <section class="balance-summary">
+              <h2>Your current balance is <span id="total-balance">0</span> <saudi-riyal-image></saudi-riyal-image></h2>
+            </section>
+
+            <section class="bank-carousel">
+              <div class="swiper-container">
+                <div class="swiper-wrapper" id="bank-cards-container">
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/public/js/components/footer.js" type="module"></script>
+    <duthoor-footer></duthoor-footer>
+
+    <template id="bank-card-template">
+      <div class="swiper-slide">
+        <div class="bank-card">
+          <img class="bank-logo" src="" alt="Bank Logo" />
+          <h3 class="bank-name"></h3>
+          <div class="bank-balance"><span class="balance-amount"></span> <saudi-riyal-image></saudi-riyal-image></div>
+        </div>
+      </div>
+    </template>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/public/js/balance.js" type="module"></script>
+  </body>
+</html>

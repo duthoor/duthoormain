@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUTHOOR - Spending Analysis</title>
+    <link rel="stylesheet" href="/public/styles/globals.css" />
+    <link rel="stylesheet" href="/public/styles/components.css" />
+    <link rel="stylesheet" href="/public/styles/spending.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/public/js/components/saudi-riyal.js" type="module"></script>
+  </head>
+  <body>
+    <script src="/public/js/components/navbar.js" type="module"></script>
+    <duthoor-navbar></duthoor-navbar>
+
+    <div class="page-container">
+      <main class="content-area">
+        <div class="wrapper">
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading your spending data...</p>
+          </div>
+
+          <div class="error-state hidden">
+            <div class="error-icon">!</div>
+            <h2>Something went wrong</h2>
+            <p class="error-message"></p>
+            <button class="retry-btn">Try Again</button>
+          </div>
+
+          <div class="success-content hidden">
+            <section class="spending-section">
+              <h2>This Month's Spending</h2>
+              <div class="two-column-layout">
+                <div class="categories-list">
+                  <div id="categories-container">
+                  </div>
+                </div>
+                <div class="chart-container">
+                  <canvas id="spendingChart"></canvas>
+                </div>
+              </div>
+            </section>
+
+            <section class="comparison-section">
+              <h2>Monthly Comparison</h2>
+              <p id="monthly-comparison-text">
+                You spent <span id="comparison-amount">0</span> <saudi-riyal-image></saudi-riyal-image>
+                <span id="comparison-direction">more</span> compared to last month.
+              </p>
+            </section>
+
+            <section class="history-section">
+              <h2>Previous Months</h2>
+              <div class="chart-container">
+                <canvas id="monthlyHistoryChart"></canvas>
+              </div>
+            </section>
+
+            <section class="transactions-section">
+              <h2>Transactions</h2>
+              <div class="table-container">
+                <table id="transactions-table">
+                  <thead>
+                    <tr>
+                      <th>Amount</th>
+                      <th>Recipient</th>
+                      <th>Category</th>
+                      <th>Date</th>
+                      <th>Bank</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/public/js/components/footer.js" type="module"></script>
+    <duthoor-footer></duthoor-footer>
+
+    <div class="bank-popup hidden" id="bank-popup">
+      <div class="popup-content">
+        <div class="popup-header">
+          <img class="popup-logo" src="" alt="Bank Logo" />
+          <h3 class="popup-bank-name"></h3>
+          <button class="close-popup">&times;</button>
+        </div>
+        <div class="popup-body">
+          <p class="popup-description"></p>
+          <div class="contact-info">
+            <p><strong>Customer Support:</strong></p>
+            <p class="popup-email"></p>
+            <p class="popup-phone"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <template id="category-item-template">
+      <div class="category-item">
+        <span class="category-name"></span>
+        <span class="category-amount">
+          <span class="amount-value"></span>
+          <saudi-riyal-image></saudi-riyal-image>
+        </span>
+      </div>
+    </template>
+
+    <template id="transaction-row-template">
+      <tr>
+        <td class="transaction-amount">
+          <span class="amount-value"></span>
+          <saudi-riyal-image></saudi-riyal-image>
+        </td>
+        <td class="transaction-recipient"></td>
+        <td>
+          <select class="transaction-category">
+          </select>
+        </td>
+        <td class="transaction-date"></td>
+        <td>
+          <button class="bank-info-btn" data-bank-id="">
+            <span class="bank-name-short"></span>
+          </button>
+        </td>
+      </tr>
+    </template>
+
+    <script src="/public/js/spending.js" type="module"></script>
+  </body>
+</html>

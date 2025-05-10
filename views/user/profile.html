@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/styles/globals.css" />
+    <link rel="stylesheet" href="/public/styles/components.css" />
+    <link rel="stylesheet" href="/public/styles/profile.css" />
+    <title>User Profile</title>
+  </head>
+  <body>
+    <script src="/public/js/components/navbar.js" type="module"></script>
+    <duthoor-navbar></duthoor-navbar>
+
+    <div class="page-container">
+      <main class="content-area">
+        <div class="wrapper">
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading your accounts...</p>
+          </div>
+
+          <div class="error-state hidden">
+            <div class="error-icon">!</div>
+            <h2>Something went wrong</h2>
+            <p class="error-message"></p>
+            <button class="retry-btn">Try Again</button>
+          </div>
+
+          <div class="success-content hidden">
+            <div class="profile-header">
+              <div class="profile-avatar" id="userInitials">JD</div>
+              <div class="profile-title">
+                <h1 id="userName">John Doe</h1>
+                <p id="userRole">Standard User</p>
+              </div>
+            </div>
+
+            <div class="profile-card">
+              <h2>Personal Information</h2>
+              <div class="profile-details">
+                <div class="detail-item">
+                  <label>Full Name</label>
+                  <p id="userFullName">John Doe</p>
+                </div>
+                <div class="detail-item">
+                  <label>Email</label>
+                  <p id="userEmail">john.doe@example.com</p>
+                </div>
+                <div class="detail-item">
+                  <label>Phone</label>
+                  <p id="userPhone">+1234567890</p>
+                </div>
+                <div class="detail-item">
+                  <label>Account Created</label>
+                  <p id="userCreatedAt">January 15, 2023</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button class="btn btn-delete" id="deleteBtn">Delete Account</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/public/js/components/footer.js" type="module"></script>
+    <duthoor-footer></duthoor-footer>
+
+    <div class="modal" id="deleteModal">
+      <div class="modal-content">
+        <h2>Confirm Account Deletion</h2>
+        <p>
+          Are you sure you want to delete your account? This action cannot be undone. All your data will be permanently
+          removed.
+        </p>
+        <div class="modal-actions">
+          <button class="btn" id="cancelDelete">Cancel</button>
+          <button class="btn btn-delete" id="confirmDelete">Delete Account</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/public/js/profile.js" type="module"></script>
+</html>

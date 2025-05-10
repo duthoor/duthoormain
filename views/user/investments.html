@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUTHOOR - Investments</title>
+    <link rel="stylesheet" href="/public/styles/globals.css" />
+    <link rel="stylesheet" href="/public/styles/components.css" />
+    <link rel="stylesheet" href="/public/styles/investments.css" />
+    <script src="/public/js/components/saudi-riyal.js" type="module"></script>
+  </head>
+  <body>
+    <script src="/public/js/components/navbar.js" type="module"></script>
+    <duthoor-navbar></duthoor-navbar>
+
+    <div class="page-container">
+      <main class="content-area">
+        <div class="wrapper">
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading your investments...</p>
+          </div>
+
+          <div class="error-state hidden">
+            <div class="error-icon">!</div>
+            <h2>Something went wrong</h2>
+            <p class="error-message"></p>
+            <button class="retry-btn">Try Again</button>
+          </div>
+
+          <div class="success-content hidden">
+            <section class="investments-summary">
+              <h2>Investment Overview</h2>
+              <div class="summary-grid">
+                <div class="summary-card">
+                  <h3>Total Portfolio Value</h3>
+                  <p class="summary-value">
+                    <span id="total-portfolio">0</span>
+                    <saudi-riyal-image></saudi-riyal-image>
+                  </p>
+                </div>
+                <div class="summary-card">
+                  <h3>Total Profit/Loss</h3>
+                  <p class="summary-value">
+                    <span id="total-profit-loss">0</span>
+                    <saudi-riyal-image></saudi-riyal-image>
+                  </p>
+                </div>
+                <div class="summary-card">
+                  <h3>Total Cash Balance</h3>
+                  <p class="summary-value">
+                    <span id="total-cash">0</span>
+                    <saudi-riyal-image></saudi-riyal-image>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="bank-investments">
+              <h2>By Bank</h2>
+              <div class="bank-cards" id="bank-cards-container">
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/public/js/components/footer.js" type="module"></script>
+    <duthoor-footer></duthoor-footer>
+
+    <template id="bank-card-template">
+      <div class="bank-card">
+        <div class="bank-header">
+          <img class="bank-logo" src="" alt="Bank Logo" />
+          <h3 class="bank-name"></h3>
+        </div>
+        <div class="bank-details">
+          <div class="detail-item">
+            <span>Portfolio:</span>
+            <span>
+              <span class="portfolio-value"></span>
+              <saudi-riyal-image></saudi-riyal-image>
+            </span>
+          </div>
+          <div class="detail-item">
+            <span>Profit/Loss:</span>
+            <span>
+              <span class="profit-loss-value"></span>
+              <saudi-riyal-image></saudi-riyal-image>
+            </span>
+          </div>
+          <div class="detail-item">
+            <span>Cash Balance:</span>
+            <span>
+              <span class="cash-value"></span>
+              <saudi-riyal-image></saudi-riyal-image>
+            </span>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script src="/public/js/investments.js" type="module"></script>
+  </body>
+</html>

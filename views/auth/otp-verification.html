@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/styles/auth.css" />
+    <title>DUTHOOR - OTP Verification</title>
+    <style>
+      .otp-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .otp-input {
+        width: 50px;
+        height: 60px;
+        text-align: center;
+        font-size: 24px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        background-color: var(--light-gray);
+      }
+
+      .otp-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(86, 130, 89, 0.2);
+      }
+
+      .resend-otp {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="logo">
+        <img src="/public/images/logo2.png" alt="DUTHOOR Logo" />
+      </div>
+
+      <h1 class="form-title">OTP Verification</h1>
+      <p class="form-subtitle">Enter the 6-digit code sent to your email</p>
+
+      <div id="globalMessage" class="global-message"></div>
+
+      <form id="otpForm">
+        <div class="otp-container">
+          <input type="text" class="otp-input" maxlength="1" data-index="1" autofocus />
+          <input type="text" class="otp-input" maxlength="1" data-index="2" />
+          <input type="text" class="otp-input" maxlength="1" data-index="3" />
+          <input type="text" class="otp-input" maxlength="1" data-index="4" />
+          <input type="text" class="otp-input" maxlength="1" data-index="5" />
+          <input type="text" class="otp-input" maxlength="1" data-index="6" />
+        </div>
+        <div id="otpError" class="error-message">Please enter a valid 6-digit code</div>
+
+        <button type="submit" class="btn">Verify</button>
+      </form>
+
+    </div>
+  </body>
+  <script src="/public/js/otp-verification.js" type="module"></script>
+</html>
