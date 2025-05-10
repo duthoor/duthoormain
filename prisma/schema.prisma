@@ -1,0 +1,184 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id         String   @id @default(cuid())
+  name       String
+  email      String   @unique
+  cnic       String   @unique
+  phone      String   @default("")
+  password   String
+  role       Role     @default(USER)
+  otp        String?
+  resetToken String?  @map("reset_token")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  userBanks       UserBank[]
+  Payables        Payables[]
+  SupportMessages SupportMessages[]
+
+  @@index([email], name: "idx_users_email")
+  @@map("users")
+}
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String
+  expiresAt DateTime @map("expires_at")
+
+  @@map("sessions")
+}
+
+model Bank {
+  id               Int    @id @default(autoincrement())
+  name             String
+  logo             String @default("")
+  shortDescription String @default("") @map("short_description")
+  email            String @default("")
+  phone            String @default("")
+
+  // Relations
+  userBanks UserBank[]
+
+  @@map("banks")
+}
+
+model UserBank {
+  id            Int    @id @default(autoincrement())
+  userId        String
+  bankId        Int
+  accountNumber String @map("account_number")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bank Bank @relation(fields: [bankId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // One-to-one relations
+  savingsAccount    SavingsAccount?
+  checkingsAccount  CheckingsAccount?
+  investmentAccount InvestmentAccount?
+
+  @@unique([userId, bankId])
+  @@map("user_banks")
+}
+
+model InvestmentAccount {
+  id         Int @id @default(autoincrement())
+  userBankId Int @unique @map("user_bank_id")
+
+  portfolio   Float @default(0.0)
+  profitLoss  Float @default(0.0) @map("profit_loss")
+  cashBalance Float @default(0.0) @map("cash_balance")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Reverse side of 1-1 relation
+  userBank UserBank? @relation(fields: [userBankId], references: [id], onDelete: Cascade)
+
+  @@map("investment_accounts")
+}
+
+model SavingsAccount {
+  id         Int @id @default(autoincrement())
+  userBankId Int @unique @map("user_bank_id")
+
+  balance Float @default(0.0)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Reverse side of 1-1 relation
+  userBank UserBank? @relation(fields: [userBankId], references: [id], onDelete: Cascade)
+
+  @@map("savings_accounts")
+}
+
+model CheckingsAccount {
+  id         Int @id @default(autoincrement())
+  userBankId Int @unique @map("user_bank_id")
+
+  balance Float @default(0.0)
+
+  prevMonthsTransactionsSummary Json? @map("prev_months_transactions_summary")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // One-to-many transactions
+  transactions Transaction[]
+
+  // Reverse side of 1-1 relation
+  userBank UserBank? @relation(fields: [userBankId], references: [id], onDelete: Cascade)
+
+  @@map("checkings_accounts")
+}
+
+model Transaction {
+  id          Int      @id @default(autoincrement())
+  amount      Float
+  date        DateTime
+  description String
+  category    String
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Many-to-one relations
+  checkingsAccountId Int
+  checkingsAccount   CheckingsAccount @relation(fields: [checkingsAccountId], references: [id], onDelete: Cascade)
+
+  @@map("transactions")
+}
+
+model Payables {
+  id       Int    @id @default(autoincrement())
+  userId   String @map("user_id")
+  title    String
+  total    Int
+  priority Int
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("payables")
+}
+
+model SupportMessages {
+  id        Int      @id @default(autoincrement())
+  userId    String   @map("user_id")
+  message   String   @db.Text()
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("support_messages")
+}
