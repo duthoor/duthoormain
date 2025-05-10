@@ -1,0 +1,124 @@
+.content-area {
+  padding: 1rem 0;
+  background-color: var(--background-color);
+  width: 100%;
+}
+
+.investments-summary {
+  margin-bottom: 3rem;
+}
+
+.investments-summary h2,
+.bank-investments h2 {
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.summary-card h3 {
+  color: var(--secondary-1);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.summary-value {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.bank-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.bank-card {
+  flex: 1 1 100%;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  transition: var(--transition);
+}
+
+@media (min-width: 768px) {
+  .bank-card {
+    flex: 1 1 calc(50% - 1.5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bank-card {
+    flex: 1 1 calc(33.333% - 1.5rem);
+  }
+}
+
+.bank-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.bank-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.bank-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.bank-name {
+  margin: 0;
+  color: var(--primary-dark);
+}
+
+.bank-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-item span:first-child {
+  color: var(--secondary-1);
+}
+
+.detail-item span:last-child {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+/* Color for positive/negative values */
+.positive {
+  color: var(--success-color) !important;
+}
+
+.negative {
+  color: var(--error-color) !important;
+}

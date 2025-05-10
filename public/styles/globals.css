@@ -1,0 +1,104 @@
+:root {
+  /* Brand colors from your palette */
+  --primary-dark: #36393b; /* Gnyx */
+  --primary-light: #a5d8ff; /* Uranian Blue */
+  --secondary-1: #9f7e69; /* Beaver */
+  --secondary-2: #afd0d6; /* Light blue */
+  --secondary-3: #568259; /* Fern green */
+
+  /* Derived colors */
+  --primary-color: var(--secondary-3); /* Using Fern green as primary */
+  --primary-hover: #457548; /* Darker shade of Fern green */
+  --error-color: #d32f2f; /* Standard error red */
+  --success-color: var(--secondary-3); /* Reusing Fern green for success */
+  --warning-color: #ffa000; /* Amber for warnings */
+
+  /* Neutrals */
+  --text-color: var(--primary-dark);
+  --light-gray: #f8f9fa;
+  --medium-gray: #e9ecef;
+  --border-color: #dee2e6;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* UI variables */
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+@font-face {
+  font-family: 'Alata';
+  src: url('/public/fonts/alata/alata-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wrapper {
+  width: min(100% - 2rem, 1400px);
+  margin-inline: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Alata', sans-serif;
+}
+
+.page-container {
+  flex-grow: 1;
+  background-color: #f4f4f4;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.two-columns {
+  --_gap: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: var(--_gap);
+
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+
+    & > * {
+      flex: 1;
+    }
+  }
+}
+
+/* Add to your globals.css */
+@media (max-width: 768px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  body.menu-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+}
+
+*:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}

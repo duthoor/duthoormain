@@ -1,0 +1,113 @@
+.content-area {
+  padding: 1rem 0;
+  background-color: var(--background-color);
+  width: 100%;
+}
+
+.balance-summary {
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.balance-summary h2 {
+  color: var(--primary-dark);
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+#total-balance {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.bank-carousel {
+  padding: 1rem 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.swiper-container {
+  padding: 1rem;
+}
+
+.bank-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  text-align: center;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition);
+  margin: 0 1rem;
+}
+
+.bank-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.bank-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  background: var(--light-gray);
+  padding: 0.5rem;
+}
+
+.bank-name {
+  color: var(--primary-dark);
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+}
+
+.bank-balance {
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.balance-amount {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+}
+
+/* Swiper Navigation */
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--primary-color) !important;
+}
+
+.swiper-pagination-bullet {
+  background: var(--secondary-2) !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--primary-color) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .balance-summary h2 {
+    font-size: 1.5rem;
+  }
+
+  .bank-card {
+    padding: 1.5rem;
+  }
+
+  .bank-logo {
+    width: 60px;
+    height: 60px;
+  }
+}

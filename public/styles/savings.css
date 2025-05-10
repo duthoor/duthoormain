@@ -1,0 +1,359 @@
+.content-area {
+  padding: 1rem 0;
+  background-color: var(--background-color);
+  width: 100%;
+}
+
+.savings-summary {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.savings-summary h2 {
+  color: var(--primary-dark);
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+#total-savings {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Bank Savings Section */
+.bank-savings {
+  margin-bottom: 3rem;
+}
+
+.bank-savings h3,
+.payables-section h3 {
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.bank-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.bank-card {
+  flex: 1 1 100%;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.bank-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.bank-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--light-gray);
+  padding: 0.5rem;
+}
+
+.bank-name {
+  color: var(--primary-dark);
+  margin: 0 0 0.5rem;
+}
+
+.savings-balance {
+  font-size: 1.25rem;
+  color: var(--text-color);
+}
+
+.balance-amount {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+/* Payables Section */
+.payables-section {
+  margin-bottom: 2rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.add-payable-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+}
+
+.add-payable-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.payables-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payable-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  transition: var(--transition);
+}
+
+.payable-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.payable-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.payable-name {
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+.priority-badge {
+  background-color: var(--light-gray);
+  color: var(--primary-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.priority-value {
+  color: var(--primary-color);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.detail-row span:first-child {
+  color: var(--secondary-1);
+}
+
+.detail-row span:last-child {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.progress-container {
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: var(--light-gray);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.delete-payable-btn {
+  background: none;
+  border: none;
+  color: var(--danger, #e74c3c);
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 50%;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.deleting {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+    animation: deleting-fade 0.5s linear infinite alternate;
+  }
+
+  @keyframes deleting-fade {
+    from {
+      opacity: 0.6;
+    }
+    to {
+      opacity: 0.3;
+    }
+  }
+}
+
+.delete-payable-btn:hover,
+.delete-payable-btn:focus {
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.delete-payable-btn svg {
+  width: 2rem;
+  height: 2rem;
+  fill: currentColor;
+  pointer-events: none;
+  display: block;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.modal {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--primary-dark);
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--light-gray);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.submit-btn.btn--loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.submit-btn.btn--loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Responsive Layout */
+@media (min-width: 768px) {
+  .bank-card {
+    flex: 1 1 calc(50% - 1.5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bank-card {
+    flex: 1 1 calc(33.333% - 1.5rem);
+  }
+}

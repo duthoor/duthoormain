@@ -1,0 +1,269 @@
+/* User Financial Dashboard Specific Styles */
+.user-profile-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.user-profile-badge span {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+/* Summary Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+}
+
+.summary-card h3 {
+  font-size: 1rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
+}
+
+.summary-card p {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.total-payables p {
+  color: var(--error-color);
+}
+
+.total-savings p {
+  color: var(--secondary-3);
+}
+
+/* Charts Section */
+.charts-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+  .charts-section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.chart-container {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-container h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+}
+
+.chart-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Banks Section */
+.banks-section {
+  margin-bottom: 2rem;
+}
+
+.banks-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .banks-container {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+
+.bank-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+}
+
+.bank-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bank-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.bank-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.bank-description {
+  font-size: 0.875rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.account-types {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 576px) {
+  .account-types {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+.account-card {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--light-gray);
+}
+
+.account-card h4 {
+  font-size: 0.875rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
+}
+
+.account-balance {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.investment-details {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-color);
+}
+
+.investment-details span {
+  display: block;
+}
+
+.profit-positive {
+  color: var(--secondary-3);
+}
+
+.profit-negative {
+  color: var(--error-color);
+}
+
+/* Payables Section */
+.payables-table-container {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+/* Transactions Section */
+.transactions-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.transactions-table-container {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow-x: auto;
+}
+
+.search-input {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 300px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.filter-select {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 200px;
+}
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--light-gray);
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: var(--light-gray);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  th,
+  td {
+    padding: 0.75rem;
+  }
+}
